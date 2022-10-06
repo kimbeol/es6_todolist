@@ -52,3 +52,32 @@ $.get('url', function(response) {
     }
   }
 }
+
+이와 같은 구조는 가독성이 떨어지고, 로직을 변경하기도 어렵다.
+
+*콜백 지옥을 해결하는 방법
+Promise 나 Async를 사용
+
+만약 코딩패턴으로만 콜백지옥을 해결하려면,
+ex)
+function parseValueDone(id) {
+    (auth(id, authDone);
+}
+function authDone(result) {
+    display(result, displayDone);
+}
+function displayDone(text) {
+   console.log(text);
+}
+$.get('url', function(response) {
+   parseValue(reponse, parseValueDone);
+});
+
+앞에 코드를 개선한 코드,
+중첩해서 선언했던 콜백 익명 함수를 각각의
+함수로 구분 지었다.
+ajax통신으로 받은 데이터를  parsevalue() 메서드로 파싱 합니다.
+parseValueDone()에 파싱 한 결과값인 id가 전달되고 auth()메서드가
+실행됩니다. auth()메서드로 인증을 거치고 나면 콜백 함수authDone()이
+실행됩니다. 인증결과 값인 result 로 display()를 호출 하면 마지막으로 
+displayDone() 메서드가 수행되면서 text가 콘솔에 출력됩니다.
