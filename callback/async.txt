@@ -4,3 +4,12 @@ async 와  await는 자바스크립트의 비도익 처리 패턴 중 가장 최
 문법입니다. 기존의 비동기 처리 방식인 콜백함수와 프로미스의 단점을
 보완하고 개발자가 읽기 좋은 코드를 작성 할 수 있음.
 
+ex)
+var user = fetchUser('domain.com/users/1');
+if (user.id === 1) {
+ console.log(user.name);
+}
+
+fetchUser() 라는 메서드를 호출하면 앞에서 봤던 코드처럼 사용자 객체를 반환한다고
+가정하고, (서버에서 HTTP 통신 코드라고 가정한다면) 위 코드는 async & await 문법이
+적용된 형태라고 봐도 됨.
