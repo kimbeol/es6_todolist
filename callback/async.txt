@@ -13,3 +13,21 @@ if (user.id === 1) {
 fetchUser() 라는 메서드를 호출하면 앞에서 봤던 코드처럼 사용자 객체를 반환한다고
 가정하고, (서버에서 HTTP 통신 코드라고 가정한다면) 위 코드는 async & await 문법이
 적용된 형태라고 봐도 됨.
+
+logName() 이라는 함수로 감싸기
+ex) 
+function logName() {
+ var user = fetchUser('domain.com/user/1');
+ if (user.id === 1) {
+  console.log(user.name);
+ }
+}
+
+여기서 async, await 를 추가해주면
+ex) 
+ async function logName() {
+ var user = await fetchUser('domain.com/users/1');
+ if (user.id === 1) {
+  console.log(user.name);
+ }
+}
