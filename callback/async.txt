@@ -31,3 +31,27 @@ ex)
   console.log(user.name);
  }
 }
+
+위 코드 설명
+ex) 
+function logName() {
+ var user = fetchUser('domain.com/user/1', function(user) {
+   if (user.id === 1) {
+     console.log(user.name);
+   }
+});
+}
+fetchUser() 라고 하는 코드는 서버에서 HTTP 통신 코드 라고 가정하고,
+자바스크립트의 비동기 처리 코드는 아래와 같이 콜백을 사용해야지 코드의 실행순서를 보장 받을 수 
+있다.
+
+*async & await 기본 문법
+ex)
+async function 함수명() {
+ await 비동기_처리_메서드명();
+}
+먼저 함수의 앞에 async 라는 예약어를 붙입니다.
+그리고 함수의 내부 로직중 HTTP 통신을 하는 비동기 처리 코드 앞에 await를 붙입니다.
+여기서 주의 하셔야 할 점은 비동기 처리 메서드가 꼭 프로미스 객체를 반환 해야
+await 가 의도한 대로 동작합니다.
+일반적으로 await의 대상이 되는 비동기 처리 코드는 Axios 등 프로미스를 반환하는 API 호출 함수 입니다.
