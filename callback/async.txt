@@ -54,4 +54,34 @@ async function 함수명() {
 그리고 함수의 내부 로직중 HTTP 통신을 하는 비동기 처리 코드 앞에 await를 붙입니다.
 여기서 주의 하셔야 할 점은 비동기 처리 메서드가 꼭 프로미스 객체를 반환 해야
 await 가 의도한 대로 동작합니다.
-일반적으로 await의 대상이 되는 비동기 처리 코드는 Axios 등 프로미스를 반환하는 API 호출 함수 입니다.
+일반적으로 await의 대상이 되는 비동기 처리 코드는 Axios 등 프로미스를 
+반환하는 API 호출 함수 입니다.
+
+ex)
+function fetchItems() {
+  return new Promise(function(resolve, reject) {
+    var items = [1, 2, 3];
+    resolve(items)
+  }
+}
+
+async function logItems() {
+  var resultItems = await fetchItems();
+  console.log(resultItems); //[1, 2, 3]
+}
+
+* async & await 예외처리
+async & await 예외를 처리하는 방법은 try , catch 입니다.
+프로미스에서 에러 처리를 위해 .catch()를 사용했던것
+ex)
+async function logTodoTitle() {
+  try {
+    var user = await getchUser();
+    if (user.id === 1) {
+      var todo = await fetchTodo();
+      console.log(todo.title);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
