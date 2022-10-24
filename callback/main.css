@@ -1,4 +1,13 @@
 @charset "UTF-8";
 
-html, body, h1, h2, h3, h4, h5, h6, p, strong, div, span, i, em, form, table, thead, tbody, tfoot, colgroup, col,
- tr, th, td, ul, li, ol, li, dl, dt, dd, header, main, footer, a {margin:0;padding:0;}
+* {margin:0;padding:0;font-size:10px;}
+html, body {margin:10px; font-size:16px; color:#333;}
+h1, h2, h3, h4, h5, h6 {font-size:initial;}
+ul li, ol li {list-style:none;}
+table, tr, thead, tbody, th, td{font-size:16px;}
+
+/* tbl */
+.tbl {border-collapse:collapse;}
+.tbl th ,
+.tbl td {border:1px solid #333;}
+
