@@ -5,9 +5,19 @@ html, body {margin:10px; font-size:16px; color:#333;}
 h1, h2, h3, h4, h5, h6 {font-size:initial;}
 ul li, ol li {list-style:none;}
 table, tr, thead, tbody, th, td{font-size:16px;}
+button {font-size:16px;min-width:60px;height:30px;cursor:pointer;}
+
+/* title */
+.title_h2 {font-size:20px; color:#666; line-height:20px; margin-bottom:20px;}
 
 /* tbl */
-.tbl {border-collapse:collapse;}
+.tbl {width:650px; text-align:center; border-collapse:collapse;}
+.tbl thead {border-top:2px solid #999;}
 .tbl th ,
-.tbl td {border:1px solid #333;}
+.tbl td {height:38px; border-bottom:1px solid #333; vertical-align:middle; }
+
+.input_block {padding-top:20px;}
+.input_block .sel{height:30px; font-size:16px;}
+.input_block input[type="text"]{font-size:16px; color:#111; height:30px; border-width:1px; padding:0; margin:0; box-sizing:border-box;}
+.input_block button[type="submit"]{}
 

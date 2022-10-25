@@ -1,5 +1,5 @@
 window.onload = function() {
-    /*
+ 
     let menu;
 
     function getId(phoneNumber) {
@@ -37,6 +37,5 @@ window.onload = function() {
         trigger(orderCoffee());
         
     },2000);
-    */
 
 }
