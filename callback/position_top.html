@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset().Top / outterHeight() / position().top </title>
+    <script src="/callback/jquery-3.61_min.js"></script>
+    <style>
+        * {padding:0;margin:0;}
+        a {text-decoration:none;}
+        li {list-style:none;}
+        .h1 {font-size:1.5rem;}
+        .contents {min-width:360px;}
+        .div_header {padding:5%;background-color:#e9e9e9;}
+        .div_body {padding:5% 5% 15%; background-color:#ddeeff;}
+        .div_scroll {padding:5% 0%; background-color:#d09ee7; overflow-y:scroll;}
+        section ~section {margin-top:20px;}
+    </style>
+</head>
+<body>
+    <div class="contents">
+        <div class="div_header">
+            <h1 class="h1">스크롤 parent , children, 전체 스크롤, 부분스크롤, 해당위치에 대한 검색</h1>
+        </div>
+        <div class="div_body parent">
+            <h2>parent</h2>
+            <div class="div_scroll children">
+                <section class="section_01">
+                    <h3>children</h3>
+                    <p>The importNode(node, deep) method steps are:
+
+                        If node is a document or shadow root, then throw a "NotSupportedError" DOMException.
+                        
+                        Return a clone of node, with this and the clone children flag set if deep is true.
+                        
+                        Specifications may define adopting steps for all or some nodes. The algorithm is passed node and oldDocument, as indicated in the adopt algorithm.
+                        
+                        To adopt a node into a document, run these steps:
+                        
+                        Let oldDocument be node’s node document.
+                        
+                        If node’s parent is non-null, then remove node.
+                        
+                        If document is not oldDocument, then:
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants:
+                        
+                        Set inclusiveDescendant’s node document to document.
+                        
+                        If inclusiveDescendant is an element, then set the node document of each attribute in inclusiveDescendant’s attribute list to document.
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants that is custom, enqueue a custom element callback reaction with inclusiveDescendant, callback name "adoptedCallback", and an argument list containing oldDocument and document.
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants, in shadow-including tree order, run the adopting steps with inclusiveDescendant and oldDocument.
+                        
+                        The adoptNode(node) method steps are:
+                        
+                        If node is a document, then throw a "NotSupportedError" DOMException.
+                        
+                        If node is a shadow root, then throw a "HierarchyRequestError" DOMException.
+                        
+                        If node is a DocumentFragment node whose host is non-null, then return.
+                        
+                        Adopt node into this.
+                        
+                        Return node.</p>
+                </section>
+
+                <section class="section_02">
+                    <h3>children</h3>
+                    <p>The importNode(node, deep) method steps are:
+
+                        If node is a document or shadow root, then throw a "NotSupportedError" DOMException.
+                        
+                        Return a clone of node, with this and the clone children flag set if deep is true.
+                        
+                        Specifications may define adopting steps for all or some nodes. The algorithm is passed node and oldDocument, as indicated in the adopt algorithm.
+                        
+                        To adopt a node into a document, run these steps:
+                        
+                        Let oldDocument be node’s node document.
+                        
+                        If node’s parent is non-null, then remove node.
+                        
+                        If document is not oldDocument, then:
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants:
+                        
+                        Set inclusiveDescendant’s node document to document.
+                        
+                        If inclusiveDescendant is an element, then set the node document of each attribute in inclusiveDescendant’s attribute list to document.
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants that is custom, enqueue a custom element callback reaction with inclusiveDescendant, callback name "adoptedCallback", and an argument list containing oldDocument and document.
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants, in shadow-including tree order, run the adopting steps with inclusiveDescendant and oldDocument.
+                        
+                        The adoptNode(node) method steps are:
+                        
+                        If node is a document, then throw a "NotSupportedError" DOMException.
+                        
+                        If node is a shadow root, then throw a "HierarchyRequestError" DOMException.
+                        
+                        If node is a DocumentFragment node whose host is non-null, then return.
+                        
+                        Adopt node into this.
+                        
+                        Return node.</p>
+                </section>
+
+                <section class="section_03">
+                    <h3>children</h3>
+                    <p>The importNode(node, deep) method steps are:
+
+                        If node is a document or shadow root, then throw a "NotSupportedError" DOMException.
+                        
+                        Return a clone of node, with this and the clone children flag set if deep is true.
+                        
+                        Specifications may define adopting steps for all or some nodes. The algorithm is passed node and oldDocument, as indicated in the adopt algorithm.
+                        
+                        To adopt a node into a document, run these steps:
+                        
+                        Let oldDocument be node’s node document.
+                        
+                        If node’s parent is non-null, then remove node.
+                        
+                        If document is not oldDocument, then:
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants:
+                        
+                        Set inclusiveDescendant’s node document to document.
+                        
+                        If inclusiveDescendant is an element, then set the node document of each attribute in inclusiveDescendant’s attribute list to document.
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants that is custom, enqueue a custom element callback reaction with inclusiveDescendant, callback name "adoptedCallback", and an argument list containing oldDocument and document.
+                        
+                        For each inclusiveDescendant in node’s shadow-including inclusive descendants, in shadow-including tree order, run the adopting steps with inclusiveDescendant and oldDocument.
+                        
+                        The adoptNode(node) method steps are:
+                        
+                        If node is a document, then throw a "NotSupportedError" DOMException.
+                        
+                        If node is a shadow root, then throw a "HierarchyRequestError" DOMException.
+                        
+                        If node is a DocumentFragment node whose host is non-null, then return.
+                        
+                        Adopt node into this.
+                        
+                        Return node.</p>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(function(){
+        let div_header , div_body , div_scroll , winInnerHeight;
+        
+        function init() {
+            divHeader = $('.div_header');
+            divBody = $('.div_body');
+            divScroll = $('.div_scroll');
+            active = $('.active');
+            
+            setTimeout(function() {
+                eventHandler();
+            },500);
+            
+        }
+
+        function eventHandler() {
+            $('body').attr('data-Ihh', window.innerHeight);
+        }
+   
+    });
+</script>
