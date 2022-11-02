@@ -156,23 +156,34 @@
 </html>
 <script>
     $(function(){
-        let div_header , div_body , div_scroll , winInnerHeight;
-        
-        function init() {
-            divHeader = $('.div_header');
-            divBody = $('.div_body');
-            divScroll = $('.div_scroll');
-            active = $('.active');
-            
-            setTimeout(function() {
-                eventHandler();
-            },500);
-            
-        }
 
-        function eventHandler() {
-            $('body').attr('data-Ihh', window.innerHeight);
-        }
+        window.bodyJs = (function(){
+
+            let div_header , div_body , div_scroll , winInnerHeight;
+            
+            function init() {
+                divHeader = $('.div_header');
+                divBody = $('.div_body');
+                divScroll = $('.div_scroll');
+                active = $('.active');
+                
+                setTimeout(function() {
+                    eventHandler();
+                },500);   
+            }
+    
+            function eventHandler() {
+                $('body').attr('data-Ihh', window.innerHeight);
+            }
+            
+            return {
+                init : init,
+                eventHandler : eventHandler,
+            }
+
+        })();
+
+        bodyJs.init();
    
     });
 </script>
