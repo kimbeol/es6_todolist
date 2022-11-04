@@ -7,6 +7,6 @@ li {list-style:none;}
 .h1 {font-size:1.5rem;}
 .contents {min-width:360px;overflow-y:scroll;}
 .div_header {position:fixed;top:0;left:0;right:0;padding:5%;background-color:#e9e9e9;}
-.div_body {padding:5% 5% 15%; background-color:#ddeeff;}
-.div_scroll {padding:5% 0%; background-color:#d09ee7; overflow-y:scroll;}
-section ~section {margin-top:20px;}
+.div_body {padding:5% 5% 15%; background-color:#ddeeff; overflow-y:scroll;}
+.div_scroll {height:auto; padding:5% 0%; background-color:#d09ee7;  box-sizing:border-box;}
+section ~section {margin-top:20px; overflow-y:scroll;}

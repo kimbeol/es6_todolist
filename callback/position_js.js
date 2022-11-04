@@ -3,7 +3,8 @@ $(function(){
     window.bodyJs = (function(){
 
         let div_header , div_body , div_scroll , winInnerHeight, eleHeight, content;
-        
+        let screenHeight;
+
         function init() {
             contents = $('.contents');
             divHeader = $('.div_header');
@@ -12,15 +13,7 @@ $(function(){
             active = $('.active');
             
             setTimeout(function() {
-                let screenHeight;
-
-                winInnerHeight = eventHandler();
-
-                // console.log('%c KMS : JAVASCRIPT : ', 'font-size:20px;border:1px solid #000;color:#000;', 'test', winInnerHeight);
-                contents.css('height', winInnerHeight);
-                console.log(divHeader);
-                console.log('%c KMS : ','font-size:16px;color:red;', divHeader , divHeader.innerHeight);
-                divBody.css('marginTop,', winInnerHeight - divHeader.innerHeight);
+                childHeight();
             },500);   
         }
 
@@ -31,7 +24,15 @@ $(function(){
         }
 
         function childHeight() {
+            winInnerHeight = eventHandler();
 
+            // console.log('%c KMS : JAVASCRIPT : ', 'font-size:20px;border:1px solid #000;color:#000;', 'test', winInnerHeight);
+            contents.css({
+                'height': winInnerHeight
+            });
+            divBody.css('height', winInnerHeight - divHeader.innerHeight());
+            // console.log('%c KMS : ','font-size:16px;color:red;', divHeader , divHeader.innerHeight);
+            divBody.css('margin-top', divHeader.innerHeight());
         }
         
         return {
