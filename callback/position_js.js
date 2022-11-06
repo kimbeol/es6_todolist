@@ -33,6 +33,7 @@ $(function(){
             divBody.css('height', winInnerHeight - divHeader.innerHeight());
             // console.log('%c KMS : ','font-size:16px;color:red;', divHeader , divHeader.innerHeight);
             divBody.css('margin-top', divHeader.innerHeight());
+            console.log('%c KMS : ', 'TEST', divHeader.innerHeight())
         }
         
         return {
