@@ -6,7 +6,7 @@ let Rectangle = class {
     }
 }
 
-console.log(Rectangle.name)
+console.log(Rectangle.name);
 
 
 window.onload = function(){
