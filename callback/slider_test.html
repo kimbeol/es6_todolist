@@ -9,8 +9,9 @@
     <script src="hemmer-2.js"></script>
     <style>
         * {margin:0; padding:0; font-size:1rem; color:#333;}
-        main {min-width:280px; width:100%; max-width:1280px; margin:0 auto; background-color:#efefef;}
-        .slider_children>div {width:100%; height:100px; background-color:tomato;}
+        main {min-width:280px; width:100%; max-width:780px; margin:0 auto; background-color:#efefef;}
+        .slider_children {}
+        .slider_children>div {width:100%; height:100px; background-color:tomato; cursor:pointer;}
     </style>
 </head>
 <body id="wrap">
@@ -30,13 +31,49 @@
 </html>
 <script>
     $(function(){
-        //alert(123);
-        let mc = new Hammer.Manager('.slider_children', {
-            recognizers: [
-                [Hammer.Rotate],
-                [Hammer.pinch, {enable:false}, ['rotate']],
-                [Hammer.Swipe,{direction: Hammer.DIRECTION_HORIZONTAL}],
-            ]
-        });
+        let mc, el;
+
+        el = document.querySelector('.box1');
+
+        mc = new Hammer(el);
+       
+        mc.add(new Hammer.Pan({ threshold: 0, pointers: 0}));
+        mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
+        mc.add(new Hammer.Rotate({ threshold: 0})).recognizeWith(mc.get('pan'));
+        mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
+
+        // mc.add(new Hammer.pan({ threshold: 0, pointers: 0}));
+        
+        mc.on("panleft panright tap press", onRotate(ev));
+
+
+        function onRotate(ev) {
+            console.log(1);
+            if(ev.type == 'rotatestart') {
+                initAngle = transform.angle || 0;
+            }
+
+            el.className = '';
+            transform.rz = 1;
+            transform.angle = initAngle + ev.rotation;
+
+            ElementUpdate(transform);
+        }
+
+        function ElementUpdate(transform) {
+           
+            let value = [
+                'translate3d(' + transform.translate.x + 'px, ' + transform.translate.y + 'px, 0)',
+                'scale(' + transform.scale + ', ' + transform.scale + ')',
+                'rotate3d('+ transform.rx +','+ transform.ry +','+ transform.rz +','+ transform.angle + 'deg)'
+            ];
+
+            value = value.join(" ");
+            el.style.transform = value;
+        }
+
+
+       // $('body').hammer().on('press', onPress);
+
     });
 </script>
