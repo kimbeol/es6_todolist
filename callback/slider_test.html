@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider hemmer 테스트</title>
+    <script src="jquery-3.61_min.js"></script>
+    <script src="hemmer-2.js"></script>
+    <style>
+        * {margin:0; padding:0; font-size:1rem; color:#333;}
+        main {min-width:280px; width:100%; max-width:1280px; margin:0 auto; background-color:#efefef;}
+        .slider_children>div {width:100%; height:100px; background-color:tomato;}
+    </style>
+</head>
+<body id="wrap">
+    <main>
+        <section class="container">
+            <div class="slider_area">
+                <div class="slider_children">
+                    <div class="box1">1</div>
+                    <div class="box2">2</div>
+                    <div class="box3">3</div>
+                    <div class="box4">4</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+<script>
+    $(function(){
+        //alert(123);
+        let mc = new Hammer.Manager('.slider_children', {
+            recognizers: [
+                [Hammer.Rotate],
+                [Hammer.pinch, {enable:false}, ['rotate']],
+                [Hammer.Swipe,{direction: Hammer.DIRECTION_HORIZONTAL}],
+            ]
+        });
+    });
+</script>
