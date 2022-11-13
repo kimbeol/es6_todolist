@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slider hemmer 테스트</title>
     <script src="jquery-3.61_min.js"></script>
-    <script src="hemmer-2.js"></script>
+    <script src="hammer-2.js"></script>
     <style>
         * {margin:0; padding:0; font-size:1rem; color:#333;}
         main {min-width:280px; width:100%; max-width:780px; margin:0 auto; background-color:#efefef;}
-        .slider_children {}
-        .slider_children>div {width:100%; height:100px; background-color:tomato; cursor:pointer;}
+        .slider_area {}
+        .slider_children>div {width:100%; height:100px; background-color:tomato; cursor:pointer; transition:transform 300ms ease;}
     </style>
 </head>
 <body id="wrap">
@@ -19,10 +19,10 @@
         <section class="container">
             <div class="slider_area">
                 <div class="slider_children">
-                    <div class="box1">1</div>
-                    <div class="box2">2</div>
-                    <div class="box3">3</div>
-                    <div class="box4">4</div>
+                    <div class="box box1">1</div>
+                    <div class="box box2">2</div>
+                    <div class="box box3">3</div>
+                    <div class="box box4">4</div>
                 </div>
             </div>
         </section>
@@ -31,49 +31,44 @@
 </html>
 <script>
     $(function(){
-        let mc, el;
+        // Get a reference to an element
+        var square = document.querySelector('.box');
 
-        el = document.querySelector('.box1');
+        // Create a manager to manager the element
+        var manager = new Hammer.Manager(square);
 
-        mc = new Hammer(el);
-       
-        mc.add(new Hammer.Pan({ threshold: 0, pointers: 0}));
-        mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
-        mc.add(new Hammer.Rotate({ threshold: 0})).recognizeWith(mc.get('pan'));
-        mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
+        // Create a recognizer
+        var Swipe = new Hammer.Swipe();
 
-        // mc.add(new Hammer.pan({ threshold: 0, pointers: 0}));
-        
-        mc.on("panleft panright tap press", onRotate(ev));
+        // Add the recognizer to the manager
+        manager.add(Swipe);
 
+        // Declare global variables to swiped correct distance
+        var deltaX = 0;
+        var deltaY = 0;
 
-        function onRotate(ev) {
-            console.log(1);
-            if(ev.type == 'rotatestart') {
-                initAngle = transform.angle || 0;
+        // Subscribe to a desired event
+        manager.on('swipe', function(e) {
+            deltaX = deltaX + e.deltaX;
+            
+            var direction = e.offsetDirection;
+            
+            var translate3d = 'translate3d(' + deltaX + 'px, 0, 0)';
+            
+            if (direction === 4 || direction === 2) {
+                e.target.innerText = deltaX;
+                e.target.style.transform = translate3d;
             }
 
-            el.className = '';
-            transform.rz = 1;
-            transform.angle = initAngle + ev.rotation;
+            if (deltaX <= 50 || deltaX <= -50) {
+                slideFn();
+            }
+        });
 
-            ElementUpdate(transform);
+
+        function slideFn() {
+
         }
-
-        function ElementUpdate(transform) {
-           
-            let value = [
-                'translate3d(' + transform.translate.x + 'px, ' + transform.translate.y + 'px, 0)',
-                'scale(' + transform.scale + ', ' + transform.scale + ')',
-                'rotate3d('+ transform.rx +','+ transform.ry +','+ transform.rz +','+ transform.angle + 'deg)'
-            ];
-
-            value = value.join(" ");
-            el.style.transform = value;
-        }
-
-
-       // $('body').hammer().on('press', onPress);
 
     });
 </script>

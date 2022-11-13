@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>touch move</title>
+    <script src="jquery-3.61_min.js"></script>
+</head>
+<body>
+    <p>1123123</p>
+</body>
+</html>
+<script>
+    $(function(){
+        var bStartEvent, bMoveEvent;
+
+        bStartEvent = false;
+        bMoveEvent = false;
+
+        function init() {
+            document.addEventListener('touchstart', this.onStart.bind(this), false);
+            document.addEventListener('touchmove', this.onMove.bind(this), false);
+            document.addEventListener('touchend', this.onEnd.bind(this), false); 
+        }
+
+        function onStart(e) {
+            bStartEvent = true;
+        }
+
+        function onMove(e) {
+            if(!bStartEvent) {
+                return;
+            }
+
+            bMoveEvent = true;
+        }
+
+        function onEnd(e) {
+            if(bStartEnent && !bMoveEnent) {
+                alert('Tap!');
+            }
+
+            bStartEvent = false;
+            bMoveEvent = false;
+        }
+
+        init();
+    });
+</script>
